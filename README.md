@@ -4,15 +4,13 @@
 #### [Video Demo](https://www.youtube.com)
 #### Description:
 
-LocalBridge is a simple, lightweight, and cross-platform local file server for sharing files on your network. Designed for convenience and speed, perfect for quick file transfers between devices. Written entirely in Python and designed to be run from a single file, making it extremely portable and easy to use on a variety of systems, including Windows, macOS, Linux, and even Android via Termux.
+LocalBridge was born out of a very simple frustration: transferring just one or two files between my phone and laptop, or vice versa, was always more trouble than it should be. USB drives are inconvenient and often incompatible with phones. Cloud storage is slow, login-heavy, and overkill for a couple of files. Bluetooth? Don’t even get me started.
 
-The project consists of a single Python script, `localbridge.py`, which uses Python's built-in `http.server` module to handle network communication and file serving.
+Before LocalBridge, I would use `python3 -m http.server` and manually connect via IP and port. It worked, but had limitations: no password protection, tiny text on mobile browsers, inconvenient port changes, and the worst part, digging up your local IP and typing it carefully on your phone.
 
-To enhance user experience, LocalBridge includes optional features such as password protection, request logging, and QR code generation for mobile access.
+LocalBridge fixes all that in a single, lightweight Python script. It shows your local IP and even generates a QR code for instant mobile access. It works across Windows, macOS, Linux, and Android via Termux, provides an intuitive, mobile-friendly interface, and includes optional password protection for basic security.
 
-Unlike other HTTP local file servers, LocalBridge offers an intuitive and responsive CSS interface to ensure readability and ease of navigation on mobile devices without adding unnecessary bloat. The interface remains minimal and clean, focusing on usability without sacrificing aesthetics.
-
-While the server is intended for local networks and convenience rather than public hosting, basic password protection was added to prevent unauthorized access. Users are warned that the password feature uses HTTP Basic Auth and does not encrypt data over the network, but it is sufficient for casual use. The focus remains on usability and speed.
+Users are warned that the password feature uses HTTP Basic Auth and does not encrypt data over the network, but it is sufficient for casual use. The focus remains on usability and speed.
 
 This is my Final Project for CS50x 2025!
 
