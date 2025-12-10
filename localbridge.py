@@ -118,7 +118,17 @@ class HTML(Handler):
                 name2 = name + "/"  # add / to folders for clarity
             else:
                 name2 = name
-            self.wfile.write(("<li><a href=\"" + name2 + "\">" + name2 + "</a></li>").encode("utf-8"))
+            full_url = name2
+            if os.path.isdir(fullp):
+                display_name = name2
+                self.wfile.write(("<li><a href=\"" + full_url + "\">" + display_name + "</a></li>").encode("utf-8"))
+            else:
+                display_name = name2
+                self.wfile.write((
+                    "<li>"
+                    f"<a href=\"{full_url}\" download>{display_name}</a> "  # download button
+                    "</li>"
+                ).encode("utf-8"))
 
         self.wfile.write(b"</ul><hr></body></html>")
         return None
