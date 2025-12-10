@@ -59,20 +59,22 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 class HTML(Handler):
     def list_directory(self, path):
+        # get files into directory
         try:
             lst = os.listdir(path)
         except:
             self.send_error(404, "cant open dir???")
             return None
-        lst.sort()
+        lst.sort()  # sort alphabetically
 
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
+        # page head
         self.wfile.write(b"<!DOCTYPE html><html><head>")
         self.wfile.write(b"<meta charset='utf-8'>")
-        self.wfile.write(("<title>Index of " + self.path + "</title>").encode("utf-8"))
+        self.wfile.write(("<title>" + self.path + "</title>").encode("utf-8"))
 
         # fancy css
         self.wfile.write(b"""
@@ -91,25 +93,29 @@ class HTML(Handler):
             }
         </style>
         """)
-
         self.wfile.write(b"</head><body>")
 
-        self.wfile.write(b"<h3>Index of: ")
+        # make breadcrumb path
+        parts = self.path.strip("/").split("/")
+        breadcrumb_html = []
 
-        # add parent directory link if not root
-        parent = os.path.dirname(self.path.rstrip("/"))
-        if parent != self.path:
-            if parent == "":
-                parent = "/"
-            self.wfile.write(b'<a href="%s">Parent folder</a><br><br>' % parent.encode("utf-8"))
+        # always start with root
+        breadcrumb_html.append('<a href="/">Root</a>')
 
-        self.wfile.write(self.path.encode("utf-8"))
-        self.wfile.write(b"</h3><hr><ul>")
+        for i, part in enumerate(parts):
+            if part:  # skip empty strings (can happen if path is "/")
+                subpath = "/" + "/".join(parts[:i+1]) + "/"
+                breadcrumb_html.append('<a href="%s">%s</a>' % (subpath, part))
 
+        # join with " / " separator
+        self.wfile.write(('<h3>' + ' / '.join(breadcrumb_html) + '</h3><hr>').encode("utf-8"))
+
+        # list files
+        self.wfile.write(b"<ul>")
         for name in lst:
             fullp = os.path.join(path, name)
             if os.path.isdir(fullp):
-                name2 = name + "/"
+                name2 = name + "/"  # add / to folders for clarity
             else:
                 name2 = name
             self.wfile.write(("<li><a href=\"" + name2 + "\">" + name2 + "</a></li>").encode("utf-8"))
