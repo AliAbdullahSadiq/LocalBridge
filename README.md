@@ -1,4 +1,4 @@
-g# LocalBridge
+# LocalBridge
 #### [Video Demo](youtube.com)
 #### Description:
 
