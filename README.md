@@ -1,7 +1,7 @@
 <img width="2714" height="948" alt="Screenshot(1)" src="https://github.com/user-attachments/assets/8a8b5c2b-f6cd-4b15-9632-262a7928ca38" />
 
 # LocalBridge
-#### [Video Demo](youtube.com)
+#### [Video Demo](https://www.youtube.com)
 #### Description:
 
 LocalBridge is a simple, lightweight, and cross-platform local file server for sharing files on your network. Designed for convenience and speed, perfect for quick file transfers between devices. Written entirely in Python and designed to be run from a single file, making it extremely portable and easy to use on a variety of systems, including Windows, macOS, Linux, and even Android via Termux.
