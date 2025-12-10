@@ -172,7 +172,7 @@ def start_server(port, dirr, pw, logs):
 
 def main():
     # args parser
-    prsr = argparse.ArgumentParser(description="share files i guess")
+    prsr = argparse.ArgumentParser(description="A simple, mobile-friendly local file-sharing web server. ")
     prsr.add_argument("-p", "--port", type=int, default=8000)
     prsr.add_argument("-d", "--directory", default=".")
     prsr.add_argument("--password")
