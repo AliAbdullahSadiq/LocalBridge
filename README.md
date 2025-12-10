@@ -1,3 +1,4 @@
+<img width="3071" height="950" alt="Screenshot(1)" src="https://github.com/user-attachments/assets/40b4b5b8-28d6-407b-b07e-c297411affea" />
 # LocalBridge
 #### [Video Demo](youtube.com)
 #### Description:
